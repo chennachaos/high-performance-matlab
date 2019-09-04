@@ -1,7 +1,7 @@
 ---
 title: "spmd"
-teaching: 20
-exercises: 30
+teaching: 40
+exercises: 40
 questions:
 - "What is **spmd** construct in MATLAB PCT?"
 - "What are distributed and composite arrays?"

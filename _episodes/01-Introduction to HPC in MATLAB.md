@@ -7,7 +7,7 @@ questions:
 - "What are the different options for HPC in MATLAB?"
 objectives:
 - "Understand what high-performance computing is."
-- "Learn different types of high-performance computing techniques
+- "A brief overview different types of HPC techniques
    available to MATLAB users."
 keypoints:
 - "High-performance computing is all about expediting the computations."
@@ -19,7 +19,52 @@ keypoints:
    at the cost of lower computing speeds."
 ---
 
-## What is High-Performance Computing (HPC)?
+# MATLAB
+MATLAB is a multi-paradigm numerical computing platform for 
+scientific computing, and is also a high-level programming language.
+
+MATLAB offers support for linear algebra (Matrices and Vectors), 
+function evaluations, plotting and visualisation, and symbolic 
+computations for mathematical expressions.
+
+Unlike C, C++ and Fortran, MATLAB is an interpreted language similar 
+to Python. This means that programs written in MATLAB can be executed 
+directly without the need for compiling them. Therefore, MATLAB is 
+relatively easy to learn and use compared to compiled languages 
+C, C++ and Fortran. However, the price one has to pay for this 
+functionality is the slowness of computations. MATLAB is atleast 
+an order of magnitude is slower than the programs written in C, 
+C++ and Fortran. Nevertheless, MATLAB supports linking of C/C++ 
+and Fortran codes with MATLAB code, if one is interested in replacing 
+computing-intensive routines with C++ or Fortran programs.
+
+# Scope of this lesson
+The main objective of this lession is to learn how we can harness 
+the computing power in high-performance computers using MATLAB.
+In this workshop we will focuss on the techniques that help run MATLAB 
+programs efficiently and effectively using commandline interface and 
+high-performance computing (HPC) resources. This material is aimed at 
+problems that are computationally so demanding that each simulation 
+runs for days on personal computers.
+
+* While high-performance computing is considerably more involved in 
+  languages such as C, C++, Fortran and Python, it is 
+  relatively easier in MATLAB.
+* MATLAB offers in-built support for high-performance computing 
+  in the form of parallelised loops, parallelised functions and
+  **spmd** construct within the MATLAB Parallel Computing Toolbox (PCT).
+* In this course, we will focus on
+    * Vectorization
+    * Profiling
+    * Parallel Computing Toolbox
+      * parfor
+      * spmd
+      * mpiprofile
+    * Running MATLAB from commandline
+    * Running MATLAB on Sunbird
+
+
+# What is High-Performance Computing (HPC)?
 In layman words, High-Performance Computing can be described as 
 the process of perfoming more calculations in a given amount of 
 time by utilising more computer hardware.
@@ -51,19 +96,14 @@ by job schedulers such as [Slurm Workload Manager](https://slurm.schedmd.com/doc
 ![Parallel pool status indicator](../fig/cluster-generic.png)
 
 
-> ## MATLAB job scheduler
-> MATLAB has its own job scheduler. However, we do not recommend it 
-> on Supercomputing Wales clusters. We use SLURM.
-{: .callout}
-
-### Nodes and Cores
+## Nodes and Cores
 Each individual computer in a cluster is commonly referred to
 as a “node”. Inside each node will be several processor chips 
 that do the actual computation. A typical node in a cluster 
 will have anything from 8 to 40 cores in total often across 
 several physical processor chips.
 
-# Reasons for high-performance computing
+## Reasons for using high-performance computing
 * Your code takes a lot of time, for example, a couple of days, 
   to run on your personal laptop or the desktop PC in your lab.
 * Even though your code is fast enough you don't have enough memory on
@@ -73,24 +113,11 @@ several physical processor chips.
 * You want to use a software library or a propriatory software that you
   cannot install on your local machine for some reason.
 
-# High-Performance Computing in MATLAB
-* The main objective of this lession is to learn how we can harness 
-the computing power in high-performance computers using MATLAB.
-* While high-performance computing is considerably more involved in 
-  languages such as C, C++, Fortran and Python, it is 
-  relatively easier in MATLAB.
-* MATLAB offers in-built support for high-performance computing 
-  in the form of parallelised loops, parallelised functions and
-  **spmd** construct within the MATLAB Parallel Computing Toolbox (PCT).
-* In this course, we will focus on
-    * Vectorization
-    * Profiling
-    * Parallel Computing Toolbox
-      * parfor
-      * spmd
-      * mpiprofile
-    * Running MATLAB from commandline
-    * Running MATLAB on Sunbird
+
+> ## MATLAB job scheduler
+> MATLAB has its own job scheduler. However, we do not recommend it 
+> on Supercomputing Wales clusters. We use SLURM.
+{: .callout}
 
 > ## MATLAB Computing speed
 > It is important to keep in mind the slowness of MATLAB codes.

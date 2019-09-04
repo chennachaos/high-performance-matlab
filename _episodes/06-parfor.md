@@ -1,7 +1,7 @@
 ---
 title: "parfor"
 teaching: 20
-exercises: 20
+exercises: 30
 questions:
 - "How to parallelise for-loops in MATLAB?"
 - "What is parfor-loop and how to use it?"
