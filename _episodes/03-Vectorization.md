@@ -6,29 +6,29 @@ questions:
 - "What is vectorization in MATLAB?"
 - "What are the advantages and disadvantages of vectorization?"
 objectives:
-- "To learn to vectorize your code in MATLAB"
+- "To learn to vectorize your code in MATLAB."
 keypoints:
-- "Vectorization is MATLAB is about replacing 
-   loops with appropriate array operations"
-- "Vectorized code runs much faster than the code with loops"
-- "Vectorization is concise and makes the code 
-   easier to understand and debug"
+- "Vectorization in MATLAB is about replacing
+   loops with appropriate array operations."
+- "Vectorized code runs much faster than the code with loops."
+- "Vectorization is concise and makes the code
+   easier to understand and debug."
 ---
 ## Vectorization
-*Vectorization* in computer programming is the act of 
-transforming loop-based scalar operations into operations 
-over vectors (or arrays). This should not be confused 
+*Vectorization* in computer programming is the act of
+transforming loop-based scalar operations into operations
+over vectors (or arrays). This should not be confused
 with [automatic vectorization](https://en.wikipedia.org/wiki/Automatic_vectorization).
 
 It is debatable whether *vectorization* should be part of a course on
-high-performance computing in MATLAB. However, if your objective is
+High-Performance Computing in MATLAB. However, if your objective is
 to improve the performance of your MATLAB code, *vectorization*
 is the place to start.
 
 ## What is Vectorization in MATLAB?
-To understand the concept of vectorization in MATLAB, let us take 
-the example of addition of two square matrices of rank *n*. In scalar languages 
-such as C, this can be done using a for-loop.
+To understand the concept of vectorization in MATLAB, let us take
+the example of adding two square matrices of rank *n*. In scalar languages
+such as C, this can be done using a for-loop:
 ~~~
 // scalar operators of array variables using for-loop
 //
@@ -40,7 +40,7 @@ for(i=0; i<n; i++)
 ~~~
 {: .source .language-c}
 
-The syntax for the same operation in MATLAB is
+The syntax for the same operation in MATLAB is:
 ~~~
 % scalar operators of array variables using for-loop
 
@@ -52,30 +52,30 @@ end
 ~~~
 {: .language-matlab}
 
-Unlike C, MATLAB and Fortran are array languages; they support some 
-basic operations such as addition, subtraction, multiplication and 
-division by a scalar to variables of type scalars and arrays. 
-In short, `vectorization generalises some operations to scalas and arrays`.
+Unlike C, MATLAB and Fortran are array languages; they support some
+basic operations such as addition, subtraction, multiplication and
+division by a scalar to variables of type scalars and arrays.
+In short, `vectorization generalises some operations to scalars and arrays`.
 
-The vectorized code for the addition of two variables in MATLAB is
+The vectorized code for the addition of two variables in MATLAB is:
 ~~~
 C = A + B;
 ~~~
 {: .language-matlab}
 
-The above code is valid irrespective of whether the variables `A`, `B` 
-and `C` are scalars or arrays. The only requirement for array type 
-variables is that all the arrays are of the same size and shape, 
-and compatible data type.
+The above code is valid irrespective of whether the variables `A`, `B`
+and `C` are scalars or arrays. The only requirement for array type
+variables is that all the arrays are of the same size and shape,
+and contain compatible data types.
 
 ## Reasons for using Vectorization
-* Vectorized code is often faster than the code with loops. 
+* Vectorized code is often faster than the code with loops.
   MATLAB optimises the vectorized code using optimised libraries
-  and multithreading.
+  and multi-threading.
 * Vectorized code is concise. Therefore, it is easier to understand and debug.
 
 > ## An exercise on vectorization
-> The following MATLAB code adds two square matrices of size n.
+> The following MATLAB code adds two square matrices of size n:
 > ~~~
 > N = 100;
 > A = rand(n,n);
@@ -89,9 +89,9 @@ and compatible data type.
 > toc
 > ~~~
 > {: .language-matlab}
-> Append the code with a vectorized version of for-loop.
+> Append the code with a vectorized version of the for-loop.
 Measure the time to check if you gain any computational benefits.
-Repeat this by increasing the value of N to 1000 and 10000.
+Repeat this by increasing the value of `n` to 1000 and 10000.
 > > ## Solution
 > > ~~~
 > > % vectorized version
@@ -100,18 +100,18 @@ Repeat this by increasing the value of N to 1000 and 10000.
 > > toc
 > > ~~~
 > > {: .language-matlab}
-> Elapsed times vary from computer to computer. However, 
-you should see significant improvements between the 
+> Elapsed times vary from computer to computer. However,
+you should see significant improvements between the
 for-loop code and vectorized code.
 > {: .solution}
 {: .challenge}
 
 ## Period operator
-The period operator (.) transforms the scalar operators multiplication 
+The period operator (.) transforms the scalar operators multiplication
 (*), division (/) and power (^) into array operators.
 
-Suppose, we want to calcualte the square of each element in an array. 
-Using the scalar operations and for-loop, we write
+Suppose, we want to calcualte the square of each element in an array.
+Using the scalar operations and for-loop, we write:
 ~~~
 n = 100;
 x = 1:n;
@@ -122,7 +122,7 @@ end
 ~~~
 {: .language-matlab}
 
-The above code can be vectorized as
+The above code can be vectorized as:
 ~~~
 n = 100;
 x = 1:n;
@@ -132,8 +132,8 @@ y = x.*x;
 
 
 > ## An exercise on array operators
-> The following code computes the radius for a set of points 
-whose X and Y coordinates are given as arrays.
+> The following code computes the radius for a set of points
+whose X and Y coordinates are given as arrays:
 > ~~~
 > n = 100;
 > x = rand(n,1);
@@ -153,17 +153,17 @@ whose X and Y coordinates are given as arrays.
 > > rad = sqrt(x.*x + y.*y);
 > > ~~~
 > > {: .language-matlab}
-> > Note that the `sqrt` function here is a vectorized function. 
-It's syntax is same whether the argument is a scalar or a vector.
+> > Note that the `sqrt` function here is a vectorized function.
+Its syntax is the same whether the argument is a scalar or a vector.
 > {: .solution}
 {: .challenge}
 
 ## Logical array operators
-If we want to perform logical operations over the elements of a 
-vector (or matrix), then we can use MATLAB's comparison operators 
+If we want to perform logical operations over the elements of a
+vector (or matrix), then we can use MATLAB's comparison operators
 which accept vectors as input arguments.
 
-To find which elements of an array are positive, we can write
+To find which elements of an array are positive, we can write:
 ~~~
 A = [0.2 -2.0 1.0 9.0 -11.0 -98.1 -0.1 2.1 7.7];
 A > 0
@@ -179,14 +179,13 @@ ans =
 
 Similarly, we can perform element-wise logical operations by using vectorization in MATLAB.
 
-For additional details on vectorization in MATLAB, we suggest the following material.
+For additional details on vectorization in MATLAB, we suggest the following material:
 * <https://uk.mathworks.com/help/matlab/matlab_prog/vectorization.html>
 * <http://www-h.eng.cam.ac.uk/help/tpl/programs/Matlab/tricks.html>
 
 ## Limitations and disadvantage of vectorization
 * Vectorized code poses issues in parallelising the code for distributed computing.
-* Sometimes, it is difficult to spot bugs when you miss the period operator (.),
+* Sometimes it is difficult to spot bugs when you miss the period operator (.),
   especially if you don't know when and where to use the period operator.
 
 {% include links.md %}
-
