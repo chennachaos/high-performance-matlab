@@ -7,33 +7,33 @@ questions:
 - "What is parfor-loop and how to use it?"
 - "What is a parallel pool in MATLAB?"
 objectives:
-- "To learn to use parfor-loop in MATLAB"
-- "To learn to create parallel pools in MATLAB"
+- "To learn to use parfor-loop in MATLAB."
+- "To learn to create parallel pools in MATLAB."
 keypoints:
-- "parfor-loop is the parallel version of the standard 
-   for-loop in MATLAB"
-- "parfor-loop distributes the iterations among the 
-   workers in the parallel loop"
-- "understanding of array-slicing rules is important 
-   when working with arrays in parfor-loop"
+- "parfor-loop is the parallel version of the standard
+   for-loop in MATLAB."
+- "parfor-loop distributes the iterations among the
+   workers in the parallel loop."
+- "An understanding of array-slicing rules is important
+   when working with arrays in parfor-loop."
 ---
 ## parfor
-**parfor**-loop is the parallel version of **for**-loop in 
-MATLAB. In a parfor-loop, the MATLAB parallel server
+**parfor**-loop is the parallel version of the **for**-loop in
+MATLAB. In a parfor-loop, the MATLAB parallel server:
 * issues the `parfor` command,
 * distributes the loop iterations to workers in the parallel pool,
 * sends the data to the workers to execute the command,
-* collects the data from the workers once the workers successfully 
-* finish the computations, and assembles the data received from the workers.
+* collects the data from the workers once the workers successfully finish the computations, and,
+* assembles the data received from the workers.
 
 |![](../fig/parfor-workers.png)|
 |:--:|
 |Image credit: <https://www.slideshare.net/jbhuang/writing-fast-matlab-code>|
 
-To understand parfor-loop and assess the performance gains, 
-we use the example of eigenvalue problem. We compute the maximum 
+To understand `parfor` and assess the performance gains,
+we use the example of the eigenvalue problem. We compute the maximum
 of the magnitude of eigenvalues of *m* random matices of size *nxn*.
-The MATLAB code using standard serial for-loop is shown below.
+The MATLAB code using a standard serial for-loop is shown below:
 
 ~~~
 clear all;
@@ -57,7 +57,7 @@ Elapsed time is 6.783651 seconds.
 ~~~
 {: .output}
 
-The following MATLAB code extends the previous code to using parfor-loop.
+The following MATLAB code extends the previous code to using `parfor`:
 ~~~
 clear all;
 clc;
@@ -104,8 +104,8 @@ Elapsed time is 19.606094 seconds.
 {: .output}
 
 The elapsed time for the parfor-loop is significantly higher than the for-loop.
-This is because of overhead incurred in starting the parallel pool for the first time.
-If we run the code for the second time, the elapsed for parfor-loop should be lower.
+This is because of an overhead incurred in starting the parallel pool for the first time.
+If we run the code for the second time, the elapsed time for the parfor-loop should be lower.
 
 ~~~
 Elapsed time is 6.792368 seconds.
@@ -128,8 +128,8 @@ Elapsed time is 3.893476 seconds.
 
 
 > ## Exercise on **parfor**
-> The following code populates a 2D array of size nxn, and 
-> computes the sum in each row on the fly.
+> The following code populates a 2D array of size `n*n`, and
+> computes the sum in each row on the fly:
 > ~~~
 > clc;
 > tic
@@ -147,7 +147,7 @@ Elapsed time is 3.893476 seconds.
 > ~~~
 > {: .language-matlab}
 > We thought of speeding up the calculations by using **parfor**.
-> So, we create the following code using **parfor**.
+> So, we create the following code using **parfor**:
 > ~~~
 > tic
 > A = zeros(n,n);
@@ -163,20 +163,20 @@ Elapsed time is 3.893476 seconds.
 > toc
 > ~~~
 > {: .language-matlab}
-> When we run the program, we will find out that the 
-> serial code works but the parallel code does not. 
+> When we run the program, we will find out that the
+> serial code works but the parallel code does not.
 > MATLAB throws an error about `parfor slicing`.
 >
 >
-> Fix the code. 
+> Fix the code.
 >
 > > ## Solution
 > > It turns out that we cannot use the array anywhere else in
-> > the parfor-loop if we already have used it in a nested for-loop 
+> > the parfor-loop if we already have used it in a nested for-loop
 > > inside the parfor-loop.
 > >
 > >
-> > To fix this, we need to create a temporary 1D array as shown below.
+> > To fix this, we need to create a temporary 1D array as shown below:
 > > ~~~
 > > parfor i=1:n
 > >    atemp = zeros(1,n);
@@ -199,18 +199,18 @@ Elapsed time is 3.893476 seconds.
 
 
 ## When to use parfor
-* When the iterations are independent of each other, 
+* When the iterations are independent of each other,
   for example, vector and matrix additions.
-* When each iteration takes longer time (this is relative 
-  and context-dependent) to exectue on a single processor.
-* In general, loop iterations with computationally intensive 
-  executions are the candidates for using parfor-loop, for example, 
+* When each iteration takes a longer time (this is relative
+  and context-dependent) to execute on a single processor.
+* In general, loop iterations with computationally intensive
+  executions are the candidates for using a parfor-loop, for example,
   the example of computing maximum eigenvalue at the beginning of this episode.
 
 
 ## When not to use parfor
-* We might not gain the computational benefits using parfor-loop if
-    * the loop iterations takes a short time to execute
+* We might not gain the computational benefits using parfor-loop if:
+    * the loop iterations takes a short time to execute, and,
     * the code has already been vectorised.
 * Data dependencies.
   ~~~
@@ -224,7 +224,7 @@ Elapsed time is 3.893476 seconds.
 
 
 > ## parfor-loop index
-> parfor-loop indices must be consecutive integers
+> parfor-loop indices must be consecutive integers:
 > ~~~
 > parfor i = 1 : 20        % valid
 > parfor i = -10 : 10      % valid
@@ -234,4 +234,3 @@ Elapsed time is 3.893476 seconds.
 {: .callout}
 
 {% include links.md %}
-
