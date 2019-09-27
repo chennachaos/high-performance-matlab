@@ -414,7 +414,7 @@ end
 {: .language-matlab}
 
 A distributed array can also be created by using array constructors, as seen
-in the previous example. To create a distributed array of size 5x5 and
+in the previous example. To create a distributed array of size $5\times5$ and
 initialise to zero:
 ~~~
 spmd
