@@ -14,12 +14,14 @@ keypoints:
 - "Use a minimalistic data set while profiling the code."
 - "Choose between profiling the whole code or a block of code."
 ---
+
 ## Profiling
 Profiling (software profiling) is the process of analysing the performance
-of a program  
+of a program
 by measuring the memory and time complexity of the program, for example,
-number of FLOPS, number of functions calls, duration of a function call,
-memory allocations and deallocations inside a function etc. We can profile
+number of floating point operations (FLOPs),
+number of functions calls, duration of a function call,
+memory allocations and deallocations inside a function, etc. We can profile
 the binary (executable) or the source code depending upon the reasons behind
 profiling. There are various types of profilers depending upon the techniques
 they use. Various techniques used by profilers are: event-based,
@@ -70,8 +72,8 @@ axis square
 saveas(gcf,'solution.png')
 
 function u = getvalue(x,y)
-N = max(size(x));
-u=zeros(N,N);
+    N = max(size(x));
+    u = zeros(N,N);
 
     for i=1:N
         for j=1:N
@@ -118,8 +120,8 @@ u = getvalue(x,y);
 % saveas(gcf,'solution.png')
 
 function u = getvalue(x,y)
-N = max(size(x));
-u=zeros(N,N);
+    N = max(size(x));
+    u = zeros(N,N);
 
     for i=1:N
         for j=1:N
