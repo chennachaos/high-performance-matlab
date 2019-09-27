@@ -229,8 +229,8 @@ of this course. Before delving into the details of **parfor** and
   construct in the esoteric language of parallel computing.
    * **spmd** is a parallel region and offers much more flexibility
      in writing parallel codes.
-   * The statement(s) inside the **spmd** construct are executed
-     on all the workers.
+   * The statement(s) inside the **spmd** construct are, by default,
+      executed on all the workers.
 * The fundamental difference between **spmd** and **parfor** is the
   communication between the workers in the pool. While **spmd** allows
   a clear way of communicating between the workers, communication

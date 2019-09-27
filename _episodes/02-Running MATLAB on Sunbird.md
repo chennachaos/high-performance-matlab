@@ -42,7 +42,7 @@ the corresponding module first.
 
 To use MATLAB, we need to load it first.
 ~~~
-module load matlab/2019a
+module load matlab/R2019a
 ~~~
 {: .language-bash}
 
@@ -64,7 +64,7 @@ which matlab
 {: .language-bash}
 
 ~~~
-/app/languages/MATLAB_Swansea/R2017b/bin/matlab
+/apps/local/languages/matlab/2019a/bin/matlab
 ~~~
 {: .output}
 
@@ -77,12 +77,12 @@ to open MATLAB on a supercomputing machine in GUI mode, it is not a
 recommended practice since its performance is heavily dependent on the
 internet speed and local X-Windows implementation.
 
-Assuming that the MATLAB script file `matlabtest.m` is located in
+Assuming that the MATLAB script file [matlabtest.m](../files/matlabtest.m) is located in
 the present working directory, we use the following command to run
-MATLAB from the command line. You can also use this functionality on your
-local computers:
+MATLAB from the command line. (*Don't run it yet on Sunbird as executing this
+command now will run matlab on the login node which we must avoid.*)
 ~~~
-matlab -nosplash -nodesktop -nodisplay -r "run(matlabtest.m); quit;"
+matlab -nosplash -nodesktop -nodisplay -r "run('matlabtest.m'); quit;"
 ~~~
 {: .language-bash}
 
@@ -92,13 +92,13 @@ matlab -nosplash -nodesktop -nodisplay -r "run(matlabtest.m); quit;"
 > * `-nodesktop` starts MATLAB without the desktop environment.
 > * `-nodisplay` suppresses the display of figures during MATLAB execution.
 > * `-r` tells MATLAB to start running the specified command (or the script file with the list of commands).
-> * `"run(matlabtest.m); quit;"` MATLAB commands to run. If `quit` is not specified then the MATLAB session will remain open.
+> * `"run('matlabtest.m'); quit;"` MATLAB commands to run. If `quit` is not specified then the MATLAB session will remain open.
 {: .callout}
 
-
-You can also do this on Windows OS with the following command:
+You can also use this functionality on your local computers.
+On Windows OS use the following command:
 ~~~
-"C:\replace with path to MATLAB installation folder\matlab.exe" -nosplash -nodesktop -nodisplay -r "run(matlabtest.m); quit;"
+"C:\replace with path to MATLAB installation folder\matlab.exe" -nosplash -nodesktop -nodisplay -r "run('matlabtest.m'); quit;"
 ~~~
 {: .language-bash}
 
@@ -147,11 +147,11 @@ and then enter the following text:
 ###
 
 # load modules
-module load matlab/2019a
+module load matlab/R2019a
 
 echo "Starting the MATLAB program"
 
-matlab -nosplash -nodesktop -nodisplay -r "run(matlabtest.m); quit;"
+matlab -nosplash -nodesktop -nodisplay -r "run('matlabtest.m'); quit;"
 
 echo "MATLAB program has finished"
 ~~~

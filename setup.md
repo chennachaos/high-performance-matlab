@@ -14,7 +14,7 @@ In this lesson we will be using MATLAB along with its Parallel Computing Toolbox
 ### Installation
 If you do not already have MATLAB installed on your PC, then you
 can install a student version of MATLAB by following the installation
-instructions provided at [Install MATLAB](https://collegeintranet.swan.ac.uk/handbooks/files/16_17/Engineering%20Software%20install%20for%20students-5.pdf).
+instructions provided at [Install MATLAB](https://myuni.swansea.ac.uk/it-services/software-enquiry/).
 
 If you already have MATLAB installed on your PC, then make sure
 that you have the Parallel Computing Toolbox installed. To check
@@ -31,7 +31,7 @@ account on the Supercomputing Wales facilities.
 
 If you already have previously attended the "Introduction to High
 Performance Computing" training, and so have already joined the
-"scwABCD" project, please contact {{site.email}} and we will
+"scw1389" project, please contact {{site.email}} and we will
 reactivate your membership.
 
 If you are new to SA2C training events, create an account through
@@ -46,7 +46,7 @@ the following steps:
 5. Click the "Reset SCW Password" button, and enter a password that
    you will use to access the Supercomputing Wales hardware.
    (This does not have to be the same as your Swansea University password.) Click Submit.
-6. Under "Join a project", enter {{site.scw_project}} as the project
+6. Under "Join a project", enter "scw1389" as the project
    code for this training session, and click "Join".
 
 
