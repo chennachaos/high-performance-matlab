@@ -173,8 +173,9 @@ echo "MATLAB program has finished"
 
 
 In this way, we need to create the job scripts for the MATLAB programs
-that we want to run on HPC machines. There is also an interactive way of
-accomplishing this task. You can learn more about this interactive approach
+that we want to run on HPC machines. There is also an interactive way 
+(still with commandline) of accomplishing this task.
+You can learn more about this interactive approach
 [here](https://edbennett.github.io/SCW-tutorial/04-running-jobs/).
 For this course, we will stick to the approach of using job scripts.
 

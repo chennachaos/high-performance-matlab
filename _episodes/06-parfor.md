@@ -209,7 +209,7 @@ Elapsed time is 3.893476 seconds.
 
 
 ## When not to use parfor
-* We might not gain the computational benefits using parfor-loop if:
+* We might not gain the computational benefits by using parfor-loop if:
     * the loop iterations takes a short time to execute, and,
     * the code has already been vectorised.
 * Data dependencies.

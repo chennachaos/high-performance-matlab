@@ -41,15 +41,13 @@ such as computer clusters, we also need **MATLAB Parallel Server™**.
   effort, though. Remember, there are no free lunches).
 
 #### MATLAB Parallel Computing Toolbox terminology
-Throughout this course, we will using several terms related to
-the MATLAB Parallel Computing Toolbox. Some important terms in
-MATLAB Parallel Computing Toolbox that we use and learn in this
-course are:
+Some important terms in MATLAB Parallel Computing Toolbox that 
+we use and learn in this course are:
 
 :-----------------|:-----------------------------------------
 * **Cluster**     | The (remote) high-performance computing machine.
 * **Client**      | The head MATLAB session; it creates workers, distributes work and gathers results.
-* **Worker**      | A single computing unit, typically a CPU core on HPC machines.
+* **Worker**      | A single computing unit, typically a CPU core.
 * **Interactive** | The mode of working using the desktop environment (GUI).
 * **Batch-style** | The mode of working using scripts, without the GUI.
 * **parpool**     | Short for parallel pool. Refers to a group of workers. A parallel pool can be either local or remote.
@@ -83,8 +81,8 @@ course are:
 which can be used to distribute and manage parallel jobs
 among the workers in a parallel pool. However, we don't
 know how this interacts with the HPC cluster, especially
-when used in combination with the HPC cluster's job schedulers
-such as SLURM which is used on Supercomputing Wales (SCW) clusters.
+when used in combination with SLURM, the HPC cluster's job
+scheduler we use on Supercomputing Wales (SCW) clusters.
 > * Therefore, use of MATLAB's job scheduler `is not
 recommended` for use on SCW clusters.
 {: .callout}
