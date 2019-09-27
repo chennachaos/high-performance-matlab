@@ -31,7 +31,7 @@ parallel command window (**pmode**).
 > P>> mpiprofile viewer
 > ~~~
 > {: .language-matlab}
-{: challenge}
+{: .challenge}
 ![mpiprofile](../fig/mpiprofile-ex1-defaultdistr-1.png)
 ![](../fig/mpiprofile-ex1-defaultdistr-2.png)
 ![](../fig/mpiprofile-ex1-defaultdistr-3.png)
@@ -46,7 +46,7 @@ parallel command window (**pmode**).
 > P>> mpiprofile viewer
 > ~~~
 > {: .language-matlab}
-{: challenge}
+{: .challenge}
 ![mpiprofile](../fig/mpiprofile-ex1-rowwisedistr-1.png)
 ![](../fig/mpiprofile-ex1-rowwisedistr-2.png)
 ![](../fig/mpiprofile-ex1-rowwisedistr-3.png)

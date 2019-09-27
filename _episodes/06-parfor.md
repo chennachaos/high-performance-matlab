@@ -32,7 +32,7 @@ MATLAB. In a parfor-loop, the MATLAB parallel server:
 
 To understand `parfor` and assess the performance gains,
 we use the example of the eigenvalue problem. We compute the maximum
-of the magnitude of eigenvalues of *m* random matices of size *nxn*.
+of the magnitude of eigenvalues of $m$ random matices of size $n\times n$.
 The MATLAB code using a standard serial for-loop is shown below:
 
 ~~~
@@ -71,7 +71,7 @@ a = zeros(m);
 
 tic
 for i=1:m
-    a(i) = max(abs(eig(rand(A))));
+    a(i) = max(abs(eig(rand(n))));
 end
 toc
 
@@ -81,7 +81,7 @@ toc
 tic
 ticBytes(gcp)
 parfor i=1:m
-    a(i) = max(abs(eig(rand(A))));
+    a(i) = max(abs(eig(rand(n))));
 end
 tocBytes(gcp)
 toc
@@ -128,7 +128,7 @@ Elapsed time is 3.893476 seconds.
 
 
 > ## Exercise on **parfor**
-> The following code populates a 2D array of size `n*n`, and
+> The following code populates a 2D array of size `n`$\times$`n`, and
 > computes the sum in each row on the fly:
 > ~~~
 > clc;
@@ -141,6 +141,7 @@ Elapsed time is 3.893476 seconds.
 >    for j=1:n
 >        A(i,j) = 2*i+3*j;
 >    end
+>    row_sum = sum(A(i,:));
 >    fprintf("%d \t %d \n", i, row_sum)
 > end
 > toc
