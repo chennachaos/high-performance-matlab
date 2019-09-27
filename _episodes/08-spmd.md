@@ -460,43 +460,43 @@ end
 
 
 ## distributed vs codistributed arrays
-So far we have seen the use of ***codistributed*** function for creating
+So far we have seen the use of the `codistributed` function for creating
 distributed arrays in MATLAB PCT. MATLAB offers another function
-***distributed*** which works in a similar fashion but with a slight difference.
+`distributed` which works in a similar fashion but with a slight difference.
 
-**distributed** and **codistributed** are the data type of the arrays distributed
-in the parallel pool - the data type is **distributed** on the client and
-**codistributed** on the workers.
+`distributed` and `codistributed` are the data type of the arrays distributed
+in the parallel pool - the data type is `distributed` on the client and
+`codistributed` on the workers.
 
-The main difference between ***distributed*** and ***codistributed*** functions
+The main difference between `distributed` and `codistributed` functions
 is in the amount of flexibility in controlling the distribution pattern.
-* ***distributed***:
-  * Should be used outside the **spmd** block.
+* `distributed`:
+  * Should be used outside the `spmd` block.
   * Is called from the client/master, and it creates an array
-   that is distributed among all the workers in the parallel pool.
-  * We CANNOT control the distribution details when using this function.
-  * Use ***distributed*** to create a distributed array by copying
+    that is distributed among all the workers in the parallel pool.
+  * We **cannot** control the distribution details when using this function.
+  * Use `distributed` to create a distributed array by copying
     the data on the client workspace or a datastore, using the default
     distribution pattern.
-* ***codistributed***
-  * When used in **spmd** block or in **pmode**, ***codistributed***
+* `codistributed`
+  * When used in an `spmd` block or in **pmode**, `codistributed`
     creates an array that is distributed among the workers in the
-    parallel pool. But when used outside **spmd** block, the entire
+    parallel pool. But when used outside an `spmd` block, the entire
     content of the array is stored on the client.
   * Is called by all the workers in the pool, and it creates an array
     that is distributed among all the workers in the parallel pool.
   * We CAN control the distribution details when using this function,
     for example, row-wise distribution or block distribution instead of
     the default column-wise distribution.
-  * Use ***codistributed*** to create a distributed array by copying
+  * Use `codistributed` to create a distributed array by copying
     the data on the client workspace or a datastore, using either the default
     distribution pattern or a distribution pattern of our liking.
 
 
-> ## ***distributed*** inside **spmd** or **pmode**
-> ***distributed*** inside **spmd** block creates a variable
-  of class *spmdlang.InvalidRemote*. NEVER use ***distributed***
-  inside the **spmd** block or in **pmode**.
+> ## `distributed` inside `spmd` or **pmode**
+> `distributed` inside `spmd` block creates a variable
+  of class `spmdlang.InvalidRemote`. **Never** use `distributed`
+  inside the `spmd` block or in **pmode**.
 {: .callout}
 
 > ## Exercise on distributed arrays
