@@ -128,7 +128,7 @@ Elapsed time is 3.893476 seconds.
 
 
 > ## Exercise on **parfor**
-> The following code populates a 2D array of size `n*n`, and
+> The following code populates a 2D array of size `n`$\times$`n`, and
 > computes the sum in each row on the fly:
 > ~~~
 > clc;
