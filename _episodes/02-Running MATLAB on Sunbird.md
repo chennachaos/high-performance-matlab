@@ -77,9 +77,23 @@ to open MATLAB on a supercomputing machine in GUI mode, it is not a
 recommended practice since its performance is heavily dependent on the
 internet speed and local X-Windows implementation.
 
-Assuming that the MATLAB script file [matlabtest.m](../files/matlabtest.m) is located in
-the present working directory, we use the following command to run
-MATLAB from the command line. (*Don't run it yet on Sunbird as executing this
+Create `matlabtest.m` file in the present working directory
+ with the Matlab code
+
+~~~
+fprintf('The program has started \n\n');
+
+a = 2;
+b = 3;
+fprintf('Sum of %d and %d = %d \n\n', a, b, (a+b));
+
+fprintf('The program has finished \n');
+~~~
+{: .language-matlab}
+
+We use the following command to run the MATLAB script in
+`matlabtest.m` file from the command line.
+(*Don't run it yet on Sunbird as executing this
 command now will run matlab on the login node which we must avoid.*)
 ~~~
 matlab -nosplash -nodesktop -nodisplay -r "run('matlabtest.m'); quit;"
