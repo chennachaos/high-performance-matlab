@@ -141,6 +141,7 @@ Elapsed time is 3.893476 seconds.
 >    for j=1:n
 >        A(i,j) = 2*i+3*j;
 >    end
+>    row_sum = sum(A(i,:));
 >    fprintf("%d \t %d \n", i, row_sum)
 > end
 > toc
