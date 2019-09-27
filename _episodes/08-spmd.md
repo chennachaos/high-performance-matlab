@@ -376,7 +376,7 @@ shows MATLAB's Parallel Command Window with eight workers (labs):
 >     {: .language-matlab}
 > * Create a distributed identity matrix of rank 5:
 >     ~~~
->     P>> distobj = codistibutor()
+>     P>> distobj = codistributor()
 >     P>> I = eye(5, distobj)
 >     P>> getLocalPart(I)
 >     ~~~
@@ -385,7 +385,7 @@ shows MATLAB's Parallel Command Window with eight workers (labs):
 >     of `Lab 1` and the next two `colulmns` in `Lab 2`.
 > * Rearrange the distribution based on rows:
 >     ~~~
->     P>> distobj = codistibutor('1d',1)
+>     P>> distobj = codistributor('1d',1)
 >     P>> I = redistribute(I, distobj)
 >     ~~~
 >     {: .language-matlab}
