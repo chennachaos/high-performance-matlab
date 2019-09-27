@@ -71,7 +71,7 @@ a = zeros(m);
 
 tic
 for i=1:m
-    a(i) = max(abs(eig(rand(A))));
+    a(i) = max(abs(eig(rand(n))));
 end
 toc
 
@@ -81,7 +81,7 @@ toc
 tic
 ticBytes(gcp)
 parfor i=1:m
-    a(i) = max(abs(eig(rand(A))));
+    a(i) = max(abs(eig(rand(n))));
 end
 tocBytes(gcp)
 toc
