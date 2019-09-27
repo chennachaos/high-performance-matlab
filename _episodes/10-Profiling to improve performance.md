@@ -72,8 +72,8 @@ axis square
 saveas(gcf,'solution.png')
 
 function u = getvalue(x,y)
-N = max(size(x));
-u=zeros(N,N);
+    N = max(size(x));
+    u = zeros(N,N);
 
     for i=1:N
         for j=1:N
@@ -120,8 +120,8 @@ u = getvalue(x,y);
 % saveas(gcf,'solution.png')
 
 function u = getvalue(x,y)
-N = max(size(x));
-u=zeros(N,N);
+    N = max(size(x));
+    u = zeros(N,N);
 
     for i=1:N
         for j=1:N
