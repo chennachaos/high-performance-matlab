@@ -77,7 +77,7 @@ and contain compatible data types.
 > ## An exercise on vectorization
 > The following MATLAB code adds two square matrices of size n:
 > ~~~
-> N = 100;
+> n = 100;
 > A = rand(n,n);
 > B = rand(n,n);
 > tic
