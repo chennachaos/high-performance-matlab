@@ -32,7 +32,7 @@ MATLAB. In a parfor-loop, the MATLAB parallel server:
 
 To understand `parfor` and assess the performance gains,
 we use the example of the eigenvalue problem. We compute the maximum
-of the magnitude of eigenvalues of *m* random matices of size *nxn*.
+of the magnitude of eigenvalues of $m$ random matices of size $n\times n$.
 The MATLAB code using a standard serial for-loop is shown below:
 
 ~~~
