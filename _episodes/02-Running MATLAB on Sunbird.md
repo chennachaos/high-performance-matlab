@@ -57,7 +57,7 @@ module list
 ~~~
 {: .language-bash}
 
-By typing 'which matlab' on the terminal we can check which MATLAB executable is called.
+By typing `which matlab` on the terminal we can check which MATLAB executable is called.
 ~~~
 which matlab
 ~~~

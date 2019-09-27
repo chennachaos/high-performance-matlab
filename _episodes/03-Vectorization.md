@@ -107,8 +107,8 @@ for-loop code and vectorized code.
 {: .challenge}
 
 ## Period operator
-The period operator (.) transforms the scalar operators multiplication
-(*), division (/) and power (^) into array operators.
+The period operator (`.`) transforms the scalar operators multiplication
+(`*`), division (`/`) and power (`^`) into array operators.
 
 Suppose, we want to calcualte the square of each element in an array.
 Using the scalar operations and for-loop, we write:
@@ -185,7 +185,7 @@ For additional details on vectorization in MATLAB, we suggest the following mate
 
 ## Limitations and disadvantage of vectorization
 * Vectorized code poses issues in parallelising the code for distributed computing.
-* Sometimes it is difficult to spot bugs when you miss the period operator (.),
+* Sometimes it is difficult to spot bugs when you miss the period operator (`.`),
   especially if you don't know when and where to use the period operator.
 
 {% include links.md %}

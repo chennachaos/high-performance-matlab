@@ -54,7 +54,7 @@ course are:
 * **Batch-style** | The mode of working using scripts, without the GUI.
 * **parpool**     | Short for parallel pool. Refers to a group of workers. A parallel pool can be either local or remote.
 * **gcp**         | Short for "Get the Current Pool" Returns a `parallel.Pool` object.
-* **labindex**    | Rank of the worker in the active parallel pool. `Starts from 1`.
+* **labindex**    | Rank of the worker in the active parallel pool. Starts from `1`.
 * **numlabs**     | Total number of workers in the active parallel pool.
 * **spmd**        | Short for the parallel programming construct *Single Program Multiple Data*.
 * **parfor**      | Parallel for-loop.
