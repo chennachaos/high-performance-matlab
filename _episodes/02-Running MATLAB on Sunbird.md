@@ -89,7 +89,7 @@ fprintf('Sum of %d and %d = %d \n\n', a, b, (a+b));
 
 fprintf('The program has finished \n');
 ~~~
-{: .language-bash}
+{: .language-matlab}
 
 We use the following command to run the MATLAB script in
 `matlabtest.m` file from the command line.
