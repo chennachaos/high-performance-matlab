@@ -87,11 +87,11 @@ end
 Once we press the **Run and Time** button we get the contour plot of the
 solution and a second window showing the 'Profile Summary'.
 The profile summary contains five columns:
-* Column 1: Function Name.
-* Column 2: Calls - number of calls made to the function in column 1.
-* Column 3: Total Time - total time spent inside a function.
-* Column 4: Self Time - amount of time spent in a function, excluding the time spent in the child functions.
-* Column 5: Total Time Plot - a bar plot showing the Total and Self times.
+* Column 1: **Function Name**.
+* Column 2: **Calls** - number of calls made to the function in column 1.
+* Column 3: **Total Time** - total time spent inside a function.
+* Column 4: **Self Time** - amount of time spent in a function, excluding the time spent in the child functions.
+* Column 5: **Total Time Plot** - a bar plot showing the Total and Self times.
 
 ![contour plot of the function](../fig/solution-plot.png)
 
@@ -215,6 +215,7 @@ end
 > ~~~
 > {: .language-matlab}
 {: .callout}
+
 
 
 {% include links.md %}

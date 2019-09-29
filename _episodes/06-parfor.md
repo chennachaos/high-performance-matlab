@@ -16,6 +16,9 @@ keypoints:
    workers in the parallel loop."
 - "An understanding of array-slicing rules is important
    when working with arrays in parfor-loop."
+- "Always parallel the outermost for-loop, unless you have
+  a justifiable reason to parallel the inner for-loops"
+- "Direct nesting of parfor-loops is not supported in MATLAB"
 ---
 ## parfor
 **parfor**-loop is the parallel version of the **for**-loop in
@@ -222,6 +225,8 @@ Elapsed time is 3.893476 seconds.
   ~~~
   {: .language-matlab}
   The latest version (2019a) of MATLAB throws an error for this loop, anyway.
+* When the number of iterations is lower than the number of workers.
+  Otherwise, you do not use all available workers; thus, wasting resources.
 
 
 > ## parfor-loop index
@@ -233,5 +238,125 @@ Elapsed time is 3.893476 seconds.
 > ~~~
 > {: .language-matlab}
 {: .callout}
+
+
+## Nested parfor-loops
+Direct nesting of parfor-loop is not allowed. For example, the
+following code is not allowed. Matlab throws an error if you try.
+
+~~~
+parfor i = 1:5
+    parfor j = 1:100
+        ...
+    end
+end
+~~~
+{: .language-matlab}
+
+However, a parfor-loop can call a function that contains a 
+parfor-loop. But we do not get any additional parallelism 
+(computational benefit). To understand that parallelising 
+the inner loops adds to the computational overhead, let us
+take the following code and measure its performance by 
+replacing the for-loops with parfor-loops one at a time.
+
+~~~
+n = 100;
+A = zeros(n,1);
+
+tic
+for i = 1:n  % loop 1
+    A(i) = myFunc(i)
+end
+toc
+
+function val myFunc(i)
+    val = 0;
+    for j = 1:10  % loop 2
+        val = val + 1;
+    end
+end
+~~~
+{: .language-matlab}
+
+
+> ## Exercise on nested par-for loops
+> The following Matlab code shows a nested for-loop for computing
+> the eigen values.
+>
+> Measure the performance of the code by appending the code with 
+> parfor-loops, first by replacing the outermost loop first and 
+> then by replacing the inner loop. Use "ticBytes" and 
+> "tocBytes" to also measure the amount of data transfer.
+>
+> ~~~
+> n  = 100;
+> ni = 50;
+> nj = 50;
+> A  = zeros(ni,nj);
+>
+> tic
+> for i = 1:ni
+>    for j = 1:nj
+>        A(i,j) = max(abs(eig(rand(n))));
+>    end
+> end
+> toc
+> ~~~
+> {: .language-matlab}
+> > ## Solution
+> > The timings might vary from one system to the other. But you should
+> > observe that parallelsed inner for-loop is expensive when compared
+> > to the parallelised outer for-loop.
+> > ~~~
+> > n  = 100;
+> > ni = 50;
+> > nj = 50;
+> > A  = zeros(ni,nj);
+> >
+> > tic
+> > for i = 1:ni
+> >    for j = 1:nj
+> >        A(i,j) = max(abs(eig(rand(n))));
+> >    end
+> > end
+> > toc
+> >
+> > %%%%%%%%%%
+> > tic
+> > ticBytes(gcp);
+> > parfor i = 1:ni
+> >    for j = 1:nj
+> >        A(i,j) = max(abs(eig(rand(n))));
+> >    end
+> > end
+> > toc
+> > tocBytes(gcp);
+> >
+> > %%%%%%%%%%
+> > tic
+> > ticBytes(gcp);
+> > for i = 1:ni
+> >    parfor j = 1:nj
+> >        A(i,j) = max(abs(eig(rand(n))));
+> >    end
+> > end
+> > toc
+> > tocBytes(gcp);
+> > ~~~
+> > {: .language-matlab}
+> {: .solution}
+{: .challenge}
+
+
+As observed in the examples, parallelising the inner for-loop
+does not give any computational benefit. This makes sense
+because parallel processing incurs overhead in creating and 
+organising the workers in the parallel pool. By parallelising
+only the outer loop, such overhead is reduced significantly.
+
+To learn more about parfor-loops, especially their limitations
+and fixes for some of the commonly encountered issues, please refer 
+to [parfor examples](https://uk.mathworks.com/help/parallel-computing/nested-parfor-loops-and-for-loops.html).
 
 {% include links.md %}

@@ -23,7 +23,7 @@ from HPC clusters.
 ## What next?
 We have covered a lot of topics in this course. However, this course is by
 no means exhaustive.
-This course covers only basics of some important features of MATLAB PCT
+This course covers only the basics of some essential features of MATLAB PCT
 that will help in improving the performance of your code by exploiting the
 parallel computers. It must be super-exciting to try all these techniques
 and tools to improve the performance of your MATLAB codes.
@@ -43,7 +43,7 @@ tips:
   what to parallelise.
 * Follow incremental approach to parallelisation - parallelise your code step
   by step, starting with the most critical function or block of code.
-* To track the changes to your code and revert back to the working version,
+* To track the changes to your code and revert to the working version,
   in case the modifications are not satisfactory, or if you make a mistake,
   use a version control system. We recommend Git. If you are not familiar
   with version control and Git, then we suggest this [Software Carpentry

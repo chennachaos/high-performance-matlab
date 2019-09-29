@@ -1,7 +1,7 @@
 ---
 title: "spmd"
 teaching: 40
-exercises: 40
+exercises: 50
 questions:
 - "What is the **spmd** construct in MATLAB PCT?"
 - "What are distributed and composite arrays?"
@@ -47,13 +47,13 @@ number of workers, if necessary.
 ## When to use **spmd**?
 **spmd** is the most flexible parallel programming construct in
 MATLAB PCT, and is very useful for:
-* programs that take a long to execute on local computers, and,
+* programs that take a long time to execute on local computers, and,
 * programs that operate on large data sets which do not fit
   on local computers.
 
 
 ### Where is the data?
-* If a variable is created before the **spmd** block is used inside
+* If a variable created before the **spmd** block is used inside
 the block, then that variable will be copied to all the workers
 participating in the parallel pool corresponding to that **spmd** block.
 * A variable created inside the **spmd** block is unique to each worker.
@@ -423,10 +423,10 @@ end
 ~~~
 {: .language-matlab}
 
-**(REWRITE):As seen in the previous examples, the default distribution strategy is by
-the distribution by columns.** This behaviour can be changed by passing
-a distributor object with appropriate options to the `codistributed` function,
-or using the `redistribution` function:
+As seen in the previous examples, the default distribution strategy is 
+the distribution by columns. This behaviour can be changed by passing
+a distributor object with appropriate options to the **codistributed**
+function, or using the **redistribution** function:
 
 ~~~
 A = eye(5,5);  % array on the client/master
@@ -460,26 +460,26 @@ end
 
 
 ## distributed vs codistributed arrays
-So far we have seen the use of the `codistributed` function for creating
+So far we have seen the use of the **codistributed** function for creating
 distributed arrays in MATLAB PCT. MATLAB offers another function
-`distributed` which works in a similar fashion but with a slight difference.
+**distributed** which works in a similar fashion but with a slight difference.
 
-`distributed` and `codistributed` are the data type of the arrays distributed
-in the parallel pool - the data type is `distributed` on the client and
-`codistributed` on the workers.
+**distributed** and **codistributed** are the data type of the arrays distributed
+in the parallel pool - the data type is **distributed** on the client and
+**codistributed** on the workers.
 
-The main difference between `distributed` and `codistributed` functions
+The main difference between **distributed** and **codistributed** functions
 is in the amount of flexibility in controlling the distribution pattern.
-* `distributed`:
+* **distributed**:
   * Should be used outside the `spmd` block.
   * Is called from the client/master, and it creates an array
     that is distributed among all the workers in the parallel pool.
-  * We **cannot** control the distribution details when using this function.
-  * Use `distributed` to create a distributed array by copying
+  * We *cannot* control the distribution details when using this function.
+  * Use **distributed** to create a distributed array by copying
     the data on the client workspace or a datastore, using the default
     distribution pattern.
-* `codistributed`
-  * When used in an `spmd` block or in **pmode**, `codistributed`
+* **codistributed**
+  * When used in an `spmd` block or in **pmode**, **codistributed**
     creates an array that is distributed among the workers in the
     parallel pool. But when used outside an `spmd` block, the entire
     content of the array is stored on the client.
@@ -488,14 +488,14 @@ is in the amount of flexibility in controlling the distribution pattern.
   * We CAN control the distribution details when using this function,
     for example, row-wise distribution or block distribution instead of
     the default column-wise distribution.
-  * Use `codistributed` to create a distributed array by copying
+  * Use **codistributed** to create a distributed array by copying
     the data on the client workspace or a datastore, using either the default
     distribution pattern or a distribution pattern of our liking.
 
 
-> ## `distributed` inside `spmd` or **pmode**
-> `distributed` inside `spmd` block creates a variable
-  of class `spmdlang.InvalidRemote`. **Never** use `distributed`
+> ## **distributed** inside `spmd` or **pmode**
+> **distributed** inside `spmd` block creates a variable
+  of class `spmdlang.InvalidRemote`. **Never** use **distributed**
   inside the `spmd` block or in **pmode**.
 {: .callout}
 
@@ -529,17 +529,31 @@ when it tries to executre `Adist1 - Adist3`.
 {: .challenge}
 
 
-> ## Exercise - Conjugate Gradient solver in Parallel
+> ## Exercise - Parallel direct solver
+> In this exercise, we use the parallel direct solver, the `\` operator,
+> in MATLAB PCT to solve a matrix system.
 > ~~~
 > clc;
-> n=10;
-> spmd
->    distobj = codistributor('1d',1);  % distributor object
->    A    = magic(n, distobj);            % matrix
->    xRef = rand(n, 1, distobj);          % solution vector
->    b    = A*xRef;                        % rhs
->    x    = pcg(A, b);
-> end
+> 
+> n = 1000;
+> A = randi(100,n,n);
+> ADist = distributed(A);
+> 
+> b = sum(A,2);
+> bDist = sum(ADist,2);
+> 
+> xEx = ones(n,1);
+> xDistEx = ones(n,1,'distributed');
+> 
+> tic
+> x = A\b;
+> err = norm(xEx-x)
+> toc
+> 
+> tic
+> xDist = ADist\bDist;
+> errDist = norm(xDistEx-xDist)
+> toc
 > ~~~
 > {: .language-matlab}
 {: .challenge}
@@ -582,9 +596,6 @@ A = distributed(magic(n));  % a distributed array on all workers
 B = gather(A);              % returns the array to the client
 ~~~
 {: .language-matlab}
-
-
-## for loops inside **spmd**
 
 
 {% include links.md %}
